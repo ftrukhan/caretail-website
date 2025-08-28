@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareTail - Your Pet Care Companion</title>
+    <meta name="description" content="The ultimate app for pet care management. Track feeding, health records, and connect with pet services.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">CareTail</span>
+            </div>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="btn-primary">Get Early Access</button>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        The Ultimate 
+                        <span class="gradient-text" data-text="Pet Care">Pet Care</span>
+                        Companion
+                    </h1>
+                    <p class="hero-description">
+                        Track your pet's health, schedule vet visits, manage feeding times, and connect with local pet services. Everything you need to keep your furry friends happy and healthy.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-large">
+                            <span>Get Early Access</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn-secondary btn-large">
+                            Watch Demo
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M8.333 6.667L13.333 10l-5 3.333V6.667z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Happy Pets</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5K+</span>
+                            <span class="stat-label">Pet Parents</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="app-preview">
+                                <div class="app-header">
+                                    <div class="app-title">🐾 CareTail</div>
+                                    <div class="app-menu">⚙️</div>
+                                </div>
+                                <div class="pet-card">
+                                    <div class="pet-avatar">🐕</div>
+                                    <div class="pet-info">
+                                        <h3>Buddy</h3>
+                                        <p>Golden Retriever • 3 years</p>
+                                    </div>
+                                </div>
+                                <div class="quick-actions">
+                                    <div class="action">🍽️ Feed</div>
+                                    <div class="action">🚶 Walk</div>
+                                    <div class="action">💊 Meds</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Everything Your Pet Needs</h2>
+                <p class="section-description">Comprehensive pet care management in one beautiful app</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Smart Scheduling</h3>
+                    <p class="feature-description">Never miss feeding times, vet appointments, or medication schedules with intelligent reminders.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Health Tracking</h3>
+                    <p class="feature-description">Monitor weight, vaccinations, and medical history with detailed analytics and insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3 class="feature-title">Local Services</h3>
+                    <p class="feature-description">Find nearby vets, groomers, pet stores, and dog parks with reviews and ratings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Pet Community</h3>
+                    <p class="feature-description">Connect with other pet parents, share photos, and get expert advice from professionals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Assistant</h3>
+                    <p class="feature-description">Get personalized care recommendations based on your pet's breed, age, and health status.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Multi-Platform</h3>
+                    <p class="feature-description">Access your pet's information anywhere with our iOS, Android, and web applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Made by Pet Lovers, for Pet Lovers</h2>
+                    <p class="about-description">
+                        CareTail was born from our own experience as pet parents who struggled to keep track of our furry friends' needs. We believe that pet care should be simple, organized, and stress-free.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <span class="check-icon">✅</span>
+                            <span>Veterinarian approved care guidelines</span>
+                        </div>
+                        <div class="about-feature">
+                            <span class="check-icon">✅</span>
+                            <span>Privacy-first approach to your pet's data</span>
+                        </div>
+                        <div class="about-feature">
+                            <span class="check-icon">✅</span>
+                            <span>Regular updates based on user feedback</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <span>🐱🐶❤️</span>
+                        <p>Happy pets and their humans</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Give Your Pet the Best Care?</h2>
+                <p class="cta-description">Join thousands of pet parents who trust CareTail for their pet care needs.</p>
+                <div class="cta-form">
+                    <input type="email" placeholder="Enter your email address" class="email-input">
+                    <button class="btn-primary">Get Early Access</button>
+                </div>
+                <p class="cta-note">We'll notify you when CareTail launches. No spam, promise! 🐾</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🐾</span>
+                        <span class="logo-text">CareTail</span>
+                    </div>
+                    <p class="footer-description">Making pet care simple and joyful.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#">Download</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CareTail. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
