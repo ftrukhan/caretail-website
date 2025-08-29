@@ -63,6 +63,52 @@ CareTail is a comprehensive pet care management application that helps pet owner
 ### Environment Variables (if needed)
 Currently, no environment variables are required for the static landing page.
 
+## 🔐 Admin Panel Setup
+
+### Admin Access
+- **URL:** `https://your-domain.com/admin-login.html`
+- **Username:** `root`
+- **Password:** `superadmin`
+- **Hidden Link:** Small dot (•) in footer social links
+
+### Admin Features
+- **App Image Management:** Upload and change the main app preview image
+- **Website Settings:** Edit site title, hero text, and descriptions
+- **Dashboard Stats:** View simulated analytics data
+- **Secure Access:** Session-based authentication
+
+### Cloudflare Worker Setup (for full admin functionality)
+
+1. **Install Wrangler CLI:**
+   ```bash
+   npm install -g wrangler
+   ```
+
+2. **Login to Cloudflare:**
+   ```bash
+   wrangler login
+   ```
+
+3. **Create KV Namespace:**
+   ```bash
+   wrangler kv:namespace create "CARETAIL_KV"
+   wrangler kv:namespace create "CARETAIL_KV" --preview
+   ```
+
+4. **Update wrangler.toml:**
+   - Replace `your_kv_namespace_id_here` with actual KV namespace IDs
+
+5. **Deploy Worker:**
+   ```bash
+   wrangler deploy
+   ```
+
+### API Endpoints
+- `POST /api/admin/auth` - Admin authentication
+- `POST /api/admin/upload-image` - Upload app image
+- `GET /api/admin/get-image` - Retrieve current app image
+- `GET/POST /api/admin/settings` - Manage site settings
+
 ## 🎨 Customization
 
 ### Colors

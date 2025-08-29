@@ -1,0 +1,19 @@
+name = "caretail-admin"
+main = "worker.js"
+compatibility_date = "2024-08-28"
+
+# KV namespace for storing images and settings
+[[kv_namespaces]]
+binding = "CARETAIL_KV"
+id = "your_kv_namespace_id_here"
+preview_id = "your_preview_kv_namespace_id_here"
+
+# Routes for the worker
+routes = [
+  "caretail.pet/api/*",
+  "caretail.app/api/*"
+]
+
+# Environment variables (if needed)
+[vars]
+ENVIRONMENT = "production"

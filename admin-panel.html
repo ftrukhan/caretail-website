@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareTail Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .admin-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .admin-nav a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .admin-nav a:hover {
+            color: #667eea;
+        }
+
+        .logout-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .admin-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .admin-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .file-input {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .file-input:hover {
+            border-color: #667eea;
+        }
+
+        .file-input input[type="file"] {
+            display: none;
+        }
+
+        .file-input-text {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-input-hint {
+            font-size: 0.875rem;
+            color: #999;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .current-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .preview-container {
+            margin-top: 1rem;
+        }
+
+        .preview-image {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .success-message {
+            background: #e8f5e8;
+            color: #2d5d2d;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container">
+            <div class="admin-logo">
+                <span>🐾</span>
+                <span>CareTail Admin</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="/">View Website</a>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-content">
+        <h1 class="admin-title">Dashboard</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">1,247</span>
+                <div class="stat-label">Email Subscribers</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">15,432</span>
+                <div class="stat-label">Page Views</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">98.2%</span>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">4.8★</span>
+                <div class="stat-label">User Rating</div>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h2 class="card-title">App Image Manager</h2>
+                
+                <div id="successMessage" class="success-message"></div>
+                
+                <div class="form-group">
+                    <label class="form-label">Current App Image</label>
+                    <div id="currentImageContainer">
+                        <div class="current-image" style="background: #f8f9ff; padding: 3rem 2rem; text-align: center; border-radius: 8px;">
+                            <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">🐱🐶❤️</span>
+                            <p style="color: #666; font-weight: 500;">Happy pets and their humans</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload New Image</label>
+                    <div class="file-input" onclick="document.getElementById('imageUpload').click()">
+                        <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(this)">
+                        <div class="file-input-text">Click to select image</div>
+                        <div class="file-input-hint">Recommended: 500x400px, JPG/PNG</div>
+                    </div>
+                    <div id="previewContainer" class="preview-container" style="display: none;">
+                        <img id="previewImage" class="preview-image" alt="Preview">
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="updateAppImage()">Update App Image</button>
+            </div>
+
+            <div class="admin-card">
+                <h2 class="card-title">Website Settings</h2>
+                
+                <div class="form-group">
+                    <label for="siteTitle" class="form-label">Site Title</label>
+                    <input type="text" id="siteTitle" class="form-input" value="CareTail - Your Pet Care Companion">
+                </div>
+
+                <div class="form-group">
+                    <label for="heroTitle" class="form-label">Hero Title</label>
+                    <input type="text" id="heroTitle" class="form-input" value="The Ultimate Pet Care Companion">
+                </div>
+
+                <div class="form-group">
+                    <label for="heroDescription" class="form-label">Hero Description</label>
+                    <textarea id="heroDescription" class="form-input" rows="4">Track your pet's health, schedule vet visits, manage feeding times, and connect with local pet services. Everything you need to keep your furry friends happy and healthy.</textarea>
+                </div>
+
+                <button class="btn-primary" onclick="updateSettings()">Save Settings</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('caretail_admin_auth') !== 'authenticated') {
+            window.location.href = 'admin-login.html';
+        }
+
+        function logout() {
+            sessionStorage.removeItem('caretail_admin_auth');
+            window.location.href = 'admin-login.html';
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewContainer = document.getElementById('previewContainer');
+                    const previewImage = document.getElementById('previewImage');
+                    
+                    previewImage.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function updateAppImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                // In a real implementation, this would upload to Cloudflare R2/KV
+                // For now, we'll simulate the update
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update current image display
+                    const currentImageContainer = document.getElementById('currentImageContainer');
+                    currentImageContainer.innerHTML = `<img src="${e.target.result}" class="current-image" alt="App Image">`;
+                    
+                    // Show success message
+                    successMessage.textContent = 'App image updated successfully!';
+                    successMessage.style.display = 'block';
+                    
+                    // Hide preview
+                    document.getElementById('previewContainer').style.display = 'none';
+                    fileInput.value = '';
+                    
+                    // Hide success message after 3 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('Please select an image first');
+            }
+        }
+
+        function updateSettings() {
+            const siteTitle = document.getElementById('siteTitle').value;
+            const heroTitle = document.getElementById('heroTitle').value;
+            const heroDescription = document.getElementById('heroDescription').value;
+            
+            // In a real implementation, this would save to Cloudflare KV
+            // For now, we'll just show a success message
+            alert('Settings saved successfully!\n\nNote: In production, these changes would be applied to the live website.');
+        }
+
+        // Load settings (in real implementation, this would fetch from KV)
+        function loadSettings() {
+            // Simulated data loading
+            console.log('Settings loaded');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+        });
+    </script>
+</body>
+</html>
